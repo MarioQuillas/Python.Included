@@ -1,0 +1,3 @@
+[submodule "pythonnet_netstandard"]
+	path = pythonnet_netstandard
+	url = https://github.com/henon/pythonnet_netstandard.git
