@@ -322,7 +322,15 @@ namespace Python.Deployment
             if (!Directory.Exists(libDir))
                 Directory.CreateDirectory(libDir);
 
-            RunCommand($"cd {libDir} && curl -k https://bootstrap.pypa.io/get-pip.py -o get-pip.py");
+            if (File.Exists("get-pip.py"))
+            {
+                File.Copy("get-pip.py", Path.Combine(libDir, "get-pip.py"));
+            }
+            else
+            {
+                RunCommand($"cd {libDir} && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py");
+            }
+
             RunCommand($"cd {EmbeddedPythonHome} && python.exe Lib\\get-pip.py");
         }
 
