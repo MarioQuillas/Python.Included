@@ -322,8 +322,11 @@ namespace Python.Deployment
             if (!Directory.Exists(libDir))
                 Directory.CreateDirectory(libDir);
 
+            Log($"Installing pip. Root directory : ${Path.GetFullPath(".")}");
+
             if (File.Exists("get-pip.py"))
             {
+                Log($"get-pip script found. Not downloading.");
                 File.Copy("get-pip.py", Path.Combine(libDir, "get-pip.py"));
             }
             else
